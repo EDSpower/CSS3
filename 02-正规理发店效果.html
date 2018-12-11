@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 60px;
+            height: 300px;
+            border: 1px solid black;
+            box-sizing: border-box;
+            background: linear-gradient(40deg, red 20%, white 20%, 40%, blue 40%, 60%, white 60%, 80%, red 80%) repeat bottom;
+            /* transition: all 2s linear; */
+            animation: move 2s linear infinite;
+        }
+        
+        div:hover {}
+        
+        @keyframes move {
+            from {
+                background-position-y: 0px;
+            }
+            to {
+                background-position-y: -600px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+    </div>
+
+</body>
+
+</html>

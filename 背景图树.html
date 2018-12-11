@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="d1" width="600" height="700" style="border:dashed 2px #ccc;position:absolute;z-index:-2;filter: alpha(opacity:50);opacity: 0.5"></canvas>
+    <div id="YST" style="width:600px; height:700px;border:dashed 2px #ccc;text-align: center;position:absolute">
+        <!-- <h4>青花瓷  周杰伦</h4>
+        <p align="center">素胚勾勒出青花笔锋浓转淡<br> 瓶身描绘的牡丹一如你初妆
+            <br> 冉冉檀香透过窗心事我了然
+            <br> 宣纸上走笔至此搁一半
+            <br> 釉色渲染仕女图韵味被私藏
+            <br> 而你嫣然的一笑如含苞待放
+            <br> 你的美一缕飘散
+            <br> 去到我去不了的地方
+            <br> 天青色等烟雨
+            <br> 而我在等你
+            <br> 炊烟袅袅升起
+            <br> 隔江千万里
+            <br> 在瓶底书汉隶仿前朝的飘逸
+            <br> 就当我为遇见你伏笔
+            <br> 天青色等烟雨
+            <br> 而我在等你
+            <br> 月色被打捞起
+            <br> 晕开了结局
+            <br> 如传世的青花瓷自顾自美丽
+            <br> 你眼带笑意
+            <br> 色白花青的锦鲤跃然於碗底
+            <br> 临摹宋体落款时却惦记着你
+            <br> 你隐藏在窑烧里千年的秘密
+            <br> 极细腻犹如绣花针落地
+            <br> 帘外芭蕉惹骤雨
+            <br> 门环惹铜绿
+            <br> 而我路过那江南小镇惹了你
+            <br> 在泼墨山水画里
+            <br> 你从墨色深处被隐去
+        </p> -->
+    </div>
+</body>
+
+</html>
+<script>
+    // 首先,解释下各个变量的含义。ctx就是前面我们的2d画布;startX是线段开始的横坐标,同理startY是纵坐标;
+    // length是线段长度;angle是角度;depth是深度,叶子深度为1,树干为12(可自己设定);branchWidth就线段的粗细。
+    // 有了这些信息,其实就描述了一个线段,通过这些信息我们才能画一个线段。
+    var drawtree = function (ctx, startx, starty, length, angle, depth, branchWidth) {
+        var rand = Math.random,
+            // maxbranch 随机画指定限制次数内的树枝
+            //n_angle 树枝的初始角度
+            n_length, n_angle, n_depth, maxbranch = 3,
+            endx, endy, maxangle = 2 * Math.PI / 4;
+        var subbranch;
+        // and其实就是随机一个0~1之间的实数,顾名思义,接下来这些new的就是下一节线段的各种参数。
+        // maxBranch就是最多有3个分叉,最大的角度 PI/2 即为,下一级调整角度在90%范围内。subBranches就是分叉的个数。
+        ctx.beginPath();
+        //context.moveTo(x,y);
+        //x	路径的目标位置的 x 坐标,y	路径的目标位置的 y 坐标
+        ctx.moveTo(startx, starty);
+        endx = startx + length * Math.cos(angle);
+        endy = starty + length * Math.sin(angle);
+        //lineCap 属性设置或返回线条末端线帽的样式:butt round square
+        ctx.lineCap = 'round';
+        //lineWidth 属性设置或返回当前线条的宽度
+        ctx.lineWidth = branchWidth;
+        //lineTo() 方法添加一个新点，然后创建从该点到画布中最后指定点的线条（该方法并不会创建线条）。
+        ctx.lineTo(endx, endy);
+        if (depth <= 2) {
+            //树的枝干
+            //context.strokeStyle=color|gradient|pattern;
+            //color	指示绘图笔触颜色的 CSS 颜色值。默认值是 #000000。
+            //gradient	用于填充绘图的渐变对象（线性或放射性）
+            //pattern	用于创建 pattern 笔触的 pattern 对象
+            //绿色rgb rgb(0,(1-255),0)
+            
+            //>>是有符号移位，” >>  0″，js当中表示位运算，整体向右移动n位，
+            // 0就是移动0位。其实它的作用和Math.floor()一样，但是速度更快。
+            //例如9 >> 2
+            //11111111111111111111111111110111  // -9 -> 11111111111111111111111111111101   // -3
+            ctx.strokeStyle = 'rgb(0,' + (((rand() * 64) + 128) >> 0) + ',0)';
+            // console.log(ctx.strokeStyle); //#00ab00 自动变为16进制
+
+
+        } else {
+            //树的叶子
+            ctx.strokeStyle = 'rgb(' + (((rand() * 64) + 64) >> 0) + ',50,25)';
+        }
+        //stroke() 方法会实际地绘制出通过 moveTo() 和 lineTo() 方法定义的路径。
+        ctx.stroke();
+
+
+        n_depth = depth - 1;
+        //判断树是否结束
+        //如果这个线段是最后一级,就没有分叉了,也是一个递归的终止条件。
+        if (!n_depth) {
+            return;
+        }
+        // 分叉数是1~3中的一个数。然后有多少个分叉,就画几条线段,newAngle为原角度调整90度之内,
+        // 新长度为原长度的0.6~1.0之间。画出主干,这棵树就可以开始画了。
+        subbranch = (rand() * (maxbranch - 1)) + 1;//1-3
+        branchWidth *= 0.6;
+        for (var i = 0; i < subbranch; i++) {
+            n_angle = angle + rand() * maxangle - maxangle * 0.5;
+            n_length = length * (0.6 + rand() * 0.4);
+            setTimeout(function () {
+                drawtree(ctx, endx, endy, n_length, n_angle, n_depth, branchWidth);
+                return;
+            }, 500)
+        }
+    };
+
+    var canvas1 = document.getElementById('d1');
+    var context = canvas1.getContext('2d');
+    //初始化的树
+    drawtree(context, 300, 700, 150, -Math.PI / 2, 12, 12);
+
+</script>

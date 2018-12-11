@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+        }
+        
+        div.big {
+            width: 350px;
+            height: 500px;
+            /* background-color: aquamarine; */
+            margin: 250px auto;
+            position: relative;
+            animation: myheart .3s infinite forwards alternate;
+        }
+        
+        div.big>div {
+            box-shadow: 0 0 50px 0 red;
+        }
+        
+        .big>div:nth-child(1),
+        .big>div:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+        
+        .big>div:nth-child(2) {
+            right: 0;
+        }
+        
+        .big>div:nth-child(3) {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: absolute;
+            top: 74px;
+            left: 75px;
+            transform: rotate(45deg);
+        }
+        
+        @keyframes myheart {
+            to {
+                transform: scale(1.5)
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="big">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+</body>
+
+</html>

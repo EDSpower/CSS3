@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-size: 20px;
+        }
+        
+        .box {
+            width: 600px;
+            height: 40px;
+            margin: 200px auto;
+            position: relative;
+        }
+        
+        #txt {
+            width: 498px;
+            height: 38px;
+            border: 1px solid #ccc;
+            font-size: 20px;
+        }
+        
+        #search {
+            width: 100px;
+            height: 40px;
+        }
+        
+        #keywords {
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background-color: rgb(12, 255, 24);
+            list-style: none;
+            width: 500px;
+            ;
+        }
+        
+        li {
+            line-height: 24px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <div class="top">
+            <input type="text" id="txt" /><input type="button" value="search" id="search" />
+        </div>
+        <ul id="keywords"></ul>
+    </div>
+
+
+</body>
+
+</html>
+<script>
+    //声明一个数组
+    if (localStorage.getItem("history")) {
+        var arr = localStorage.getItem("history");
+        arr = JSON.parse(arr);
+    } else {
+        var arr = [];
+    }
+    //获取元素
+    var btn = document.getElementById("search");
+    var ul = document.getElementById("keywords");
+    var txt = document.getElementById("txt");
+    btn.onclick = function() {
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] == txt.value) {
+                break;
+            }
+        }
+        if (i == arr.length) {
+            arr.push(txt.value);
+        }
+
+        var json = JSON.stringify(arr)
+        localStorage.setItem("history", json);
+    }
+    txt.onfocus = function() {
+        txt.value = "";
+        for (var i = 0; i < arr.length; i++) {
+            var li = document.createElement("li");
+            li.innerHTML = arr[i];
+            ul.appendChild(li);
+
+        }
+
+    }
+
+
+    txt.onblur = function() {
+        ul.innerHTML = "";
+    }
+</script>

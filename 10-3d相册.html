@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+            perspective: 650px;
+        }
+        
+        ul {
+            list-style: none;
+            padding: 0;
+            width: 200px;
+            height: 280px;
+            border: 1px solid gold;
+            margin: 150px auto;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+        
+        li {
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            position: absolute;
+            box-shadow: 0px 0px 10px 1px gold;
+            transform-origin: left;
+        }
+        
+        ul:hover {
+            transform: rotateX(25deg);
+        }
+        
+        li:nth-child(1) {
+            background: url("./My-photo/6.jpg") no-repeat center/cover;
+        }
+        
+        li:nth-child(2) {
+            background: url("./My-photo/5.jpg") no-repeat center/cover;
+        }
+        
+        li:nth-child(3) {
+            background: url("./My-photo/4.jpg") no-repeat center/cover;
+        }
+        
+        li:nth-child(4) {
+            background: url("./My-photo/3.jpg") no-repeat center/cover;
+        }
+        
+        li:nth-child(5) {
+            background: url("./My-photo/2.jpg") no-repeat center/cover;
+        }
+        
+        li:nth-child(6) {
+            background: url("./My-photo/1.jpg") no-repeat center/cover;
+        }
+        
+        ul:hover li:nth-child(6) {
+            transform: rotateY(-180deg);
+            /* transform-origin: left; */
+            transition: all 2s 1s;
+        }
+        
+        ul:hover li:nth-child(5) {
+            transform: rotateY(-150deg);
+            /* transform-origin: left; */
+            /* background: url("./My-photo/2.jpg") no-repeat center/cover; */
+            transition: all 2s 2s;
+        }
+        
+        ul:hover li:nth-child(4) {
+            transform: rotateY(-120deg);
+            /* transform-origin: left; */
+            transition: all 2s 3s;
+            /* background: url("./My-photo/3.jpg") no-repeat center/cover; */
+        }
+        
+        ul:hover li:nth-child(3) {
+            transform: rotateY(-90deg);
+            /* transform-origin: left; */
+            transition: all 2s 4s;
+            /* background: url("./My-photo/5.jpg") no-repeat center/cover; */
+        }
+        
+        ul:hover li:nth-child(2) {
+            transform: rotateY(-60deg);
+            /* transform-origin: left; */
+            transition: all 2s 5s;
+            /* background: url("./My-photo/6.jpg") no-repeat center/cover; */
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+
+</html>

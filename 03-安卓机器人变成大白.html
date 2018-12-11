@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .big {
+            width: 500px;
+            height: 605px;
+            padding-top: 25px;
+            border: 1px solid #9bcd38;
+            margin: 0 auto;
+            transition: all 1s;
+        }
+        
+        .top {
+            width: 100px;
+            height: 50px;
+            /* background-color: pink; */
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .top::before {
+            width: 6px;
+            height: 60px;
+            display: block;
+            content: "";
+            background-color: #9bcd38;
+            border-radius: 4px 4px 0 0;
+        }
+        
+        .top::after {
+            width: 7px;
+            height: 60px;
+            display: inline-block;
+            content: "";
+            background-color: #9bcd38;
+            position: absolute;
+            right: 0;
+            top: 0;
+            border-radius: 4px 4px 0 0;
+        }
+        
+        .header {
+            width: 270px;
+            height: 125px;
+            background-color: #9bcd38;
+            margin: -6px auto 0px;
+            border-radius: 140px 140px 0 0;
+            position: relative;
+        }
+        
+        .header::before {
+            text-align: center;
+            color: hotpink;
+            font-weight: bold;
+            font-size: 30px;
+            content: "❤";
+            display: block;
+            width: 36px;
+            height: 36px;
+            background: wheat;
+            border-radius: 50%;
+            position: absolute;
+            left: 60px;
+            top: 48px;
+        }
+        
+        .header::after {
+            text-align: center;
+            color: hotpink;
+            font-weight: bold;
+            font-size: 20px;
+            content: "❤";
+            display: block;
+            width: 25px;
+            height: 25px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            left: 178px;
+            top: 48px;
+        }
+        
+        .fun {
+            width: 100px;
+            height: 30px;
+            background: white;
+            border-radius: 20px 20px 60px 60px;
+            padding-left: 6px;
+            position: absolute;
+            left: 84px;
+            top: 90px;
+            overflow: hidden;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        .fun li {
+            float: left;
+            width: 1px;
+            height: 30px;
+            margin: 0 7px;
+            border-left: 4px solid #eee;
+        }
+        
+        .main {
+            width: 275px;
+            height: 250px;
+            background-color: #9bcd38;
+            margin: 10px auto 0;
+            border-radius: 4px 4px 40px 40px;
+            position: relative;
+        }
+        
+        .main::before {
+            content: "";
+            display: block;
+            width: 52px;
+            height: 180px;
+            background-color: #9bcd38;
+            position: absolute;
+            left: -68px;
+            top: -33px;
+            border-radius: 30px;
+        }
+        
+        .main::after {
+            content: "";
+            display: block;
+            width: 57px;
+            height: 211px;
+            background-color: #9bcd38;
+            position: absolute;
+            right: -74px;
+            top: -33px;
+            border-radius: 30px;
+        }
+        
+        .footer {
+            width: 50px;
+            height: 100px;
+            /* background-color: rebeccapurple; */
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .footer::after {
+            content: "";
+            display: block;
+            width: 63px;
+            height: 100px;
+            background-color: #9bcd38;
+            border-radius: 0 0 30px 30px;
+            position: absolute;
+            left: -63px;
+        }
+        
+        .footer::before {
+            content: "";
+            display: block;
+            width: 63px;
+            height: 100px;
+            background-color: #9bcd38;
+            border-radius: 0 0 30px 30px;
+            position: absolute;
+            left: 50px;
+        }
+        /* _________开启特效___________________________ */
+        
+        *,
+         ::before,
+         ::after {
+            transition: all 1s;
+        }
+        
+        .big:hover {
+            background-color: RGB(46, 100, 198);
+            height: 700px;
+            width: 540px;
+        }
+        
+        .big:hover .header {
+            width: 265px;
+            height: 180px;
+            border-radius: 100%;
+            background-color: #fff;
+            border: 4px solid black;
+            box-sizing: border-box;
+            z-index: 3;
+        }
+        
+        .big:hover .header::before {
+            background: black;
+            content: "";
+            width: 36px;
+            height: 36px;
+        }
+        
+        .big:hover .header::after {
+            background: black;
+            content: "";
+            width: 36px;
+            height: 36px;
+            left: 165px;
+        }
+        
+        .big:hover .top::before {
+            height: 0;
+        }
+        
+        .big:hover .top::after {
+            height: 0;
+        }
+        
+        .big:hover .fun {
+            border-top: 6px solid black;
+            height: 6px;
+            box-sizing: border-box;
+            top: 66px;
+        }
+        
+        .big:hover .main {
+            height: 340px;
+            width: 360px;
+            background-color: #fff;
+            border-radius: 160px 160px 50px 50px;
+            border: 4px solid black;
+            box-sizing: border-box;
+            top: -50px;
+            z-index: 1;
+        }
+        
+        .big:hover .main::after {
+            width: 70px;
+            height: 240px;
+            background-color: #fff;
+            border: 4px solid black;
+            z-index: 3;
+            top: 50px;
+            right: -55px;
+            ;
+        }
+        
+        .big:hover .main::before {
+            width: 70px;
+            height: 240px;
+            background-color: #fff;
+            border: 4px solid black;
+            ;
+        }
+        
+        .yuan {
+            width: 40px;
+            height: 0px;
+            background-color: #fff;
+            position: absolute;
+            right: 70px;
+            top: 60px;
+            border: 3px solid black;
+            border-radius: 50%;
+            display: none;
+        }
+        
+        .yuan::before {
+            display: block;
+            border-bottom: 3px solid black;
+            content: "";
+            margin-top: 20px;
+        }
+        
+        .big:hover .yuan {
+            height: 40px;
+            display: block;
+        }
+        
+        .big:hover .footer::before {
+            width: 110px;
+            height: 120px;
+            background-color: #fff;
+            border: 4px solid black;
+            top: -60px;
+            left: 60px;
+        }
+        
+        .big:hover .footer::after {
+            width: 110px;
+            height: 120px;
+            background-color: #fff;
+            border: 4px solid black;
+            top: -60px;
+            left: -100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="big">
+        <div class="top">
+        </div>
+        <div class="header">
+            <div class="fun">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </div>
+        </div>
+        <div class="main">
+            <div class="yuan"></div>
+        </div>
+        <div class="footer"></div>
+
+    </div>
+
+
+
+
+</body>
+
+</html>

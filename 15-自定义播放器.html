@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .controls {
+            width: 600px;
+            height: 450px;
+            border: 2px solid white;
+            margin: 250px auto;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            /* align-items: center; */
+        }
+        
+        body {
+            background-color: black;
+        }
+        
+        video {
+            width: 100%;
+            height: 90%;
+            /* margin-top: -20px */
+            /* flex: 9; */
+        }
+        
+        .kong {
+            flex: 1;
+            display: flex;
+            background-color: pink;
+        }
+        
+        .kong>a {
+            width: 60px;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+        }
+        
+        .progress {
+            flex: 1px;
+            background-color: aqua;
+        }
+        
+        .son {
+            width: 0%;
+            height: 100%;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="controls">
+        <video src="./video/movie01.mp4"></video>
+        <div class="kong">
+            <a id="btn1" href="javasript:void(0)">播放</a>
+            <div class="progress">
+                <div class="son"></div>
+            </div>
+            <a id="btn2" href="javasript:void(0)">暂停</a>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script>
+    //获取元素
+    var video = document.querySelector("video");
+    var playBtn = document.getElementById("btn1")
+    var pauseBtn = document.getElementById("btn2");
+    var son = document.querySelector(".son");
+    //控制播放暂停事件
+    playBtn.onclick = function() {
+            if (this.innerHTML == "播放") {
+                video.play();
+                this.innerHTML = "暂停";
+            } else {
+                video.pause();
+                this.innerHTML = "播放";
+            }
+        }
+        //视频时间变化事件
+    video.ontimeupdate = function() {
+        console.log(this.currentTime, this.duration);
+        son.style.width = (this.currentTime / this.duration) * 100 + "%";
+        // son.style.width = 30 + "%";
+
+    }
+</script>

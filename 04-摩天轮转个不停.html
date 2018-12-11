@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            transition: all 6s;
+            width: 100px;
+            height: 10px;
+            background-color: purple;
+            margin: 500px auto;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        div:hover {
+            transform: rotate(360deg) translate(800px);
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>
+<script>
+    navigator.geolocation.getCurrentPosition(function(loc) {
+        console.log("纬度是:" + loc.coords.latitude + "经度是:" + loc.coords.longitude)
+    })
+</script>

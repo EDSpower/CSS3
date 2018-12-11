@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul {
+            width: 280px;
+            height: 280px;
+            background-color: lightgray;
+            padding: 0;
+            list-style: none;
+            border-radius: 20px;
+        }
+        
+        ul.one {
+            width: 280px;
+            height: 280px;
+            background-color: lightgray;
+            padding: 0;
+            list-style: none;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        li {
+            width: 80px;
+            height: 80px;
+            background-color: black;
+            border-radius: 50%;
+        }
+        
+        .two {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        .three {
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .three>li:nth-child(1) {
+            margin-top: 10px;
+        }
+        
+        .three>li:nth-child(2) {
+            align-self: center;
+        }
+        
+        .three>li:nth-child(3) {
+            align-self: flex-end;
+            margin-bottom: 10px;
+        }
+        
+        .four {
+            display: flex;
+        }
+        
+        .four>div {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="one">
+        <li></li>
+    </ul>
+    <ul class="two">
+        <li></li>
+        <li></li>
+    </ul>
+    <ul class="three">
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ul class="four">
+        <div>
+            <li></li>
+            <li></li>
+        </div>
+        <div>
+            <li></li>
+            <li></li>
+        </div>
+    </ul>
+    <ul class="four">
+        <div>
+            <li></li>
+            <li></li>
+        </div>
+        <div>
+            <li></li>
+        </div>
+        <div>
+            <li></li>
+            <li></li>
+        </div>
+    </ul>
+    <ul class="four">
+        <div>
+            <li></li>
+            <li></li>
+            <li></li>
+        </div>
+
+        <div>
+            <li></li>
+            <li></li>
+            <li></li>
+        </div>
+    </ul>
+</body>
+
+</html>
